@@ -23,6 +23,9 @@
 #include <unistd.h>		/* for convenience */
 #include <signal.h>		/* for SIG_ERR */
 
+#define TRUE 1
+#define FALSE 0
+
 #define	MAXLINE	4096			/* max line length */
 
 /*
