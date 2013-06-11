@@ -22,6 +22,7 @@
 #include <string.h>		/* for convenience */
 #include <unistd.h>		/* for convenience */
 #include <signal.h>		/* for SIG_ERR */
+#include <fcntl.h>
 
 #define TRUE 1
 #define FALSE 0
@@ -127,5 +128,18 @@ void	TELL_PARENT(pid_t);
 void	TELL_CHILD(pid_t);
 void	WAIT_PARENT(void);
 void	WAIT_CHILD(void);
+
+void set_fl(int fd, int flags) /*  flags are file status flags to turn on */
+{
+    int     val;
+
+    if ((val = fcntl(fd, F_GETFL, 0)) < 0)
+        err_sys("fcntl F_GETFL error");
+
+    val |= flags;       /*  turn on flags */
+
+    if (fcntl(fd, F_SETFL, val) < 0)
+        err_sys("fcntl F_SETFL error");
+} 
 
 #endif	/* _APUE_H */
