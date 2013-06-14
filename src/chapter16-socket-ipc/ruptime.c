@@ -3,7 +3,7 @@
  *
  *       Filename:  get_uptime.c
  *
- *    Description:  演示通过socket获取uptime服务的数据
+ *    Description:  演示通过socket获取uptime服务的数据, 使用：./ruptime localhost
  *
  *        Version:  1.0
  *        Created:  2013年06月12日 23时36分58秒
@@ -67,7 +67,7 @@ int main(int argc, char** argv) {
     hint.ai_addr = NULL;
     hint.ai_next = NULL;
 
-    if ((err = getaddrinfo(argv[1], "ruptime", &hint, &ailist)) != 0) {
+    if ((err = getaddrinfo(argv[1], "uptimed", &hint, &ailist)) != 0) {
         err_quit("getaddrinfo error");
     }
 
